@@ -1,0 +1,105 @@
+{
+  "hidefiles.configurationType": "local",
+  "hidefiles.globalConfig": {
+    "profiles": [
+      {
+        "name": "Default",
+        "detail": "",
+        "description": "Test",
+        "hidden": []
+      },
+      {
+        "name": "Strict",
+        "detail": "Hide everything not immediately required",
+        "hidden": [
+          "$Default",
+          ".github/",
+          ".idea/",
+          ".vscode/",
+          ".gitattributes",
+          ".gitignore",
+          ".npmrc",
+          ".prettierignore",
+          ".prettierrc",
+          ".npmrc",
+          "README.md",
+          "pnpm-lock.yaml",
+          "LICENSE",
+          "contributing.md",
+          ".nano-staged.js",
+          ".electron-vendors.cache.json",
+          ".editorconfig",
+          ".browserslistrc",
+          "dist/",
+          "node_modules/",
+          "scripts/update-electron-vendors.js",
+          "scripts/",
+          ".simple-git-hooks.json"
+        ]
+      },
+      {
+        "hidden": [
+          ".browserslistrc",
+          ".editorconfig",
+          ".electron-vendors.cache.json",
+          ".env",
+          ".eslintrc.json",
+          ".gitattributes",
+          ".gitignore",
+          ".nano-staged.js",
+          ".npmrc",
+          ".prettierignore",
+          ".prettierrc",
+          ".simple-git-hooks.json",
+          "contributing.md",
+          "electron-builder.yml",
+          "LICENSE",
+          "package.json",
+          "pnpm-lock.yaml",
+          "README.md",
+          "vitest.config.js",
+          "types/",
+          ".editorconfig",
+          "tests/",
+          ".editorconfig",
+          "scripts/",
+          ".github/",
+          ".idea/",
+          ".vscode/",
+          "buildResources/",
+          "dist/",
+          "node_modules/"
+        ],
+        "name": "Packages",
+        "description": "",
+        "detail": "",
+        "peek": []
+      },
+      {
+        "hidden": [
+          "$Packages",
+          "packages/preload/",
+          "packages/main/",
+          "packages/renderer/vite.config.js",
+          "packages/renderer/tsconfig.json",
+          "packages/renderer/.eslintrc.json",
+          "packages/renderer/vite.config.js",
+          "packages/renderer/setupTests.js",
+          "packages/renderer/dist/"
+        ],
+        "name": "Renderer",
+        "description": "",
+        "detail": "",
+        "peek": []
+      }
+    ]
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true
+  },
+  "hidefiles.selectedProfile": "Show All Files"
+}
