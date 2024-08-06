@@ -12,15 +12,12 @@ concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: true
 
-
 defaults:
   run:
     shell: 'bash'
 
-
 jobs:
   draft_release:
-
     permissions:
       contents: write # Allows this job to create releases
 
@@ -36,16 +33,30 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          cache: 'npm'
+          node-version: 22
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
-      - run: npm run build
+      - run: pnpm run build
 
       - name: Compile artifacts ${{ inputs.dry-run && '' || 'and upload them to github release' }}
-        # I use this action because it is capable of retrying multiple times if there are any issues with the distribution server
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 15
@@ -53,13 +64,6 @@ jobs:
           retry_wait_seconds: 15
           retry_on: error
           shell: 'bash'
-          # Due to this issue https://github.com/electron-userland/electron-builder/issues/6411 the build with npx when rebuilding native dependencies hangs forever
-          # see https://github.com/cawa-93/vite-electron-builder/pull/953
-          command: ./node_modules/.bin/electron-builder --config electron-builder.yml --publish ${{ inputs.dry-run && 'never' || 'always' }}
+          command: pnpm exec electron-builder --config electron-builder.yml --publish ${{ inputs.dry-run && 'never' || 'always' }}
         env:
-          # Code Signing params
-          # See https://www.electron.build/code-signing
-          # CSC_LINK: ''
-          # CSC_KEY_PASSWORD: ''
-          # Publishing artifacts
-          GH_TOKEN: ${{ secrets.github_token }} # GitHub token, automatically provided (No need to define this secret in the repo settings)
+          GH_TOKEN: ${{ secrets.github_token }}
