@@ -14,8 +14,7 @@
     "baseUrl": ".",
     "paths": {
       "#preload": ["../preload/src/index.ts"],
-      "/@/*": ["./src/*"]
-      // "@/*": ["./src/*"]
+      "@/*": ["./src/*"]
     },
     "lib": ["ESNext", "dom", "dom.iterable"]
   },

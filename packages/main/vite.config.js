@@ -1,5 +1,5 @@
-import {node} from '../../.electron-vendors.cache.json';
-import {join} from 'node:path';
+import { node } from '../../.electron-vendors.cache.json';
+import { join } from 'node:path';
 
 const PACKAGE_ROOT = __dirname;
 const PROJECT_ROOT = join(PACKAGE_ROOT, '../..');
@@ -14,7 +14,7 @@ const config = {
   envDir: PROJECT_ROOT,
   resolve: {
     alias: {
-      '/@/': join(PACKAGE_ROOT, 'src') + '/',
+      '@/': join(PACKAGE_ROOT, 'src') + '/',
     },
   },
   build: {

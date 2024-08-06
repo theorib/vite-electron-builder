@@ -1,6 +1,6 @@
-import {render, screen, within} from '@testing-library/react';
-import {expect, test} from 'vitest';
-import ReactiveHash from '/@/components/sample/ReactiveHash';
+import { render, screen, within } from '@testing-library/react';
+import { expect, test } from 'vitest';
+import ReactiveHash from '@/components/sample/ReactiveHash';
 import userEvent from '@testing-library/user-event';
 
 vi.mock('#preload', () => {
@@ -13,12 +13,12 @@ test('ReactiveHash component', async () => {
   render(<ReactiveHash />);
   const user = userEvent.setup();
 
-  const legend = screen.getByRole('group', {name: 'Test Node.js API'});
+  const legend = screen.getByRole('group', { name: 'Test Node.js API' });
   expect(legend).toBeInTheDocument();
 
-  const dataInput = within(legend).getByRole('textbox', {name: 'Raw value :'});
+  const dataInput = within(legend).getByRole('textbox', { name: 'Raw value :' });
   expect(dataInput).toBeInTheDocument();
-  const hashInput = within(legend).getByRole('textbox', {name: 'Hashed by node:crypto :'});
+  const hashInput = within(legend).getByRole('textbox', { name: 'Hashed by node:crypto :' });
   expect(hashInput).toBeInTheDocument();
 
   const dataToHashed = Math.random().toString(36).slice(2, 7);

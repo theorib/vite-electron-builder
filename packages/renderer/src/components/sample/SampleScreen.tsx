@@ -1,7 +1,7 @@
-import '/@/components/sample/SampleScreen.css';
-import ReactiveHash from '/@/components/sample/ReactiveHash';
-import ElectronVersions from '/@/components/sample/ElectronVersions';
-import ReactiveCounter from '/@/components/sample/ReactiveCounter';
+import '@/components/sample/SampleScreen.css';
+import ReactiveHash from '@/components/sample/ReactiveHash';
+import ElectronVersions from '@/components/sample/ElectronVersions';
+import ReactiveCounter from '@/components/sample/ReactiveCounter';
 
 const APP_VERSION = import.meta.env.VITE_APP_VERSION;
 
