@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 import {chrome} from '../../.electron-vendors.cache.json';
-import vue from '@vitejs/plugin-vue';
+import react from '@vitejs/plugin-react';
 import {renderer} from 'unplugin-auto-expose';
 import {join} from 'node:path';
 
@@ -13,6 +13,7 @@ const PROJECT_ROOT = join(PACKAGE_ROOT, '../..');
  * @see https://vitejs.dev/config/
  */
 const config = {
+  logLevel: 'info',
   mode: process.env.MODE,
   root: PACKAGE_ROOT,
   envDir: PROJECT_ROOT,
@@ -39,10 +40,12 @@ const config = {
     reportCompressedSize: false,
   },
   test: {
+    globals: true,
     environment: 'happy-dom',
+    setupFiles: join(PACKAGE_ROOT, '/setupTests.js'),
   },
   plugins: [
-    vue(),
+    react(),
     renderer.vite({
       preloadEntry: join(PACKAGE_ROOT, '../preload/src/index.ts'),
     }),

@@ -1,20 +1,27 @@
 {
   "env": {
     "browser": true,
-    "node": false
+    "node": false,
+    "jest": true
   },
   "extends": [
-    /** @see https://eslint.vuejs.org/rules/ */
-    "plugin:vue/vue3-recommended"
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
   ],
+  "plugins": ["react", "react-hooks", "react-refresh", "testing-library", "jest-dom"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
-    "ecmaVersion": 12,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "settings": {
+    "react": {"version": "18.3.1"}
+  },
   "rules": {
-    /** These rules are disabled because they are incompatible with prettier */
-    "vue/html-self-closing": "off",
-    "vue/singleline-html-element-content-newline": "off"
+    "react-refresh/only-export-components": ["warn", {"allowConstantExport": true}],
+    "react/prop-types": "off"
   }
 }
