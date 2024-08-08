@@ -1,18 +1,16 @@
 /* eslint-env node */
-
+import { defineConfig } from 'vite';
 import { chrome } from '../../.electron-vendors.cache.json';
 import react from '@vitejs/plugin-react';
 import { renderer } from 'unplugin-auto-expose';
 import { join } from 'node:path';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 const PACKAGE_ROOT = __dirname;
 const PROJECT_ROOT = join(PACKAGE_ROOT, '../..');
 
-/**
- * @type {import('vite').UserConfig}
- * @see https://vitejs.dev/config/
- */
-const config = {
+export default defineConfig({
   logLevel: 'info',
   mode: process.env.MODE,
   root: PACKAGE_ROOT,
@@ -44,12 +42,15 @@ const config = {
     environment: 'happy-dom',
     setupFiles: join(PACKAGE_ROOT, '/setupTests.js'),
   },
+  css: {
+    postcss: {
+      plugins: [tailwindcss(join(PACKAGE_ROOT, 'tailwind.config.ts')), autoprefixer()],
+    },
+  },
   plugins: [
     react(),
     renderer.vite({
       preloadEntry: join(PACKAGE_ROOT, '../preload/src/index.ts'),
     }),
   ],
-};
-
-export default config;
+});
