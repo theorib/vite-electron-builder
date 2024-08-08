@@ -9,7 +9,7 @@ export default function SampleScreen() {
     <div className="space-y-4 max-w-[700px] my-16 mx-auto text-center font-sans">
       <img
         alt="Vue logo"
-        src="../assets/logo.svg"
+        src="./logo.svg"
         width="150"
         className="text-center mx-auto"
       />
