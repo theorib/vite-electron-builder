@@ -34,7 +34,8 @@
           "node_modules/",
           "scripts/update-electron-vendors.js",
           "scripts/",
-          ".simple-git-hooks.json"
+          ".simple-git-hooks.json",
+          ".eslintcache"
         ]
       },
       {
@@ -68,7 +69,8 @@
           ".vscode/",
           "buildResources/",
           "dist/",
-          "node_modules/"
+          "node_modules/",
+          ".eslintcache"
         ],
         "name": "Packages",
         "description": "",
@@ -101,5 +103,5 @@
     "**/CVS": true,
     "**/.DS_Store": true
   },
-  "hidefiles.selectedProfile": "Show All Files"
+  "hidefiles.selectedProfile": "Default"
 }

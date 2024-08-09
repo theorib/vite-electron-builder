@@ -1,8 +1,8 @@
-import type {MockedClass, MockedObject} from 'vitest';
-import {beforeEach, expect, test, vi} from 'vitest';
-import {restoreOrCreateWindow} from '../src/mainWindow';
+import type { MockedClass, MockedObject } from 'vitest';
+import { beforeEach, expect, test, vi } from 'vitest';
+import { restoreOrCreateWindow } from '../src/mainWindow';
 
-import {BrowserWindow} from 'electron';
+import { BrowserWindow } from 'electron';
 
 /**
  * Mock real electron BrowserWindow API
@@ -29,7 +29,7 @@ vi.mock('electron', () => {
     },
   };
 
-  return {BrowserWindow: bw, app};
+  return { BrowserWindow: bw, app };
 });
 
 beforeEach(() => {
@@ -37,7 +37,7 @@ beforeEach(() => {
 });
 
 test('Should create a new window', async () => {
-  const {mock} = vi.mocked(BrowserWindow);
+  const { mock } = vi.mocked(BrowserWindow);
   expect(mock.instances).toHaveLength(0);
 
   await restoreOrCreateWindow();
@@ -54,7 +54,7 @@ test('Should create a new window', async () => {
 });
 
 test('Should restore an existing window', async () => {
-  const {mock} = vi.mocked(BrowserWindow);
+  const { mock } = vi.mocked(BrowserWindow);
 
   // Create a window and minimize it.
   await restoreOrCreateWindow();
@@ -68,7 +68,7 @@ test('Should restore an existing window', async () => {
 });
 
 test('Should create a new window if the previous one was destroyed', async () => {
-  const {mock} = vi.mocked(BrowserWindow);
+  const { mock } = vi.mocked(BrowserWindow);
 
   // Create a window and destroy it.
   await restoreOrCreateWindow();
