@@ -1,9 +1,10 @@
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'node:url';
 import type { Config } from 'tailwindcss';
 import daisyui from 'daisyui';
 
-// eslint-disable-next-line no-undef
-const PACKAGE_ROOT = __dirname;
+const PACKAGE_ROOT = dirname(fileURLToPath(import.meta.url));
+
 export default {
   content: [
     join(PACKAGE_ROOT, './index.html'),
