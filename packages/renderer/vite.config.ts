@@ -1,11 +1,8 @@
-/* eslint-env node */
 import { defineConfig } from 'vite';
 import { chrome } from '../../.electron-vendors.cache.json';
 import react from '@vitejs/plugin-react';
 import { renderer } from 'unplugin-auto-expose';
 import { join } from 'node:path';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
 
 const PACKAGE_ROOT = __dirname;
 const PROJECT_ROOT = join(PACKAGE_ROOT, '../..');
@@ -41,11 +38,6 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     setupFiles: join(PACKAGE_ROOT, '/setupTests.js'),
-  },
-  css: {
-    postcss: {
-      plugins: [tailwindcss(join(PACKAGE_ROOT, 'tailwind.config.ts')), autoprefixer()],
-    },
   },
   plugins: [
     react(),
