@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import { chrome } from '../../.electron-vendors.cache.json';
 import react from '@vitejs/plugin-react';
